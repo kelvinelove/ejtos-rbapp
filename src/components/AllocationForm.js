@@ -11,22 +11,20 @@ const ItemSelected = (props) => {
 
     const submitEvent = () => {
 
-        if(/^[0-9\b]+$/.test(quantity))
-        {
+        if (/^[0-9\b]+$/.test(quantity)) {
             const totalExpenses = expenses.reduce((total, item) => {
                 return (total += item.allocatedBudget);
             }, 0);
-        
+
             const reminded = parseInt(Budget) - totalExpenses;
 
-            if(quantity <= reminded)
-            {
+            if (quantity <= reminded) {
                 const item = {
                     name: name,
                     quantity: parseInt(quantity),
                 };
-        
-                if(action === "Reduce") {
+
+                if (action === "Reduce") {
                     dispatch({
                         type: 'RED_QUANTITY',
                         payload: item,
@@ -38,56 +36,62 @@ const ItemSelected = (props) => {
                     });
                 }
             }
-            else
-            {
+            else {
                 alert(`The value can not exceed remaning funds ${Currency}${reminded}!`);
             }
         }
-        else
-        {
+        else {
             alert('The field accept only numbers value!');
         }
     };
 
     return (
-        <div className="d-flex justify-content-center">
-            <div>
-                <div className='row'>
-                    <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                        <div className="input-group-prepend">
-                            <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+        <div className="container">
+            <div className="d-flex justify-content-center">
+                <div className='row w-100'>
+                    <div className="input-group mb-3 alert alert-secondary w-100 justify-content-between align-items-center">
+                        <div className="d-flex align-items-center mr-3">
+                            <div className="input-group-prepend">
+                                <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+                            </div>
+                            &nbsp;
+                            <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
+                                <option defaultValue>Choose...</option>
+                                <option value="Marketing" name="Marketing">Marketing</option>
+                                <option value="Finance" name="Finance">Finance</option>
+                                <option value="Sales" name="Sales">Sales</option>
+                                <option value="Human Resource" name="Human Resource">Human Resource</option>
+                                <option value="IT" name="IT">IT</option>
+                            </select>
                         </div>
-                        <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
-                            <option defaultValue>Choose...</option>
-                            <option value="Marketing" name="Marketing">Marketing</option>
-                            <option value="Finance" name="Finance">Finance</option>
-                            <option value="Sales" name="Sales">Sales</option>
-                            <option value="Human Resource" name="Human Resource">Human Resource</option>
-                            <option value="IT" name="IT">IT</option>
-                        </select>
     
-                        <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
-                            <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
+                        <div className="d-flex align-items-center mr-3">
+                            <div className="input-group-prepend">
+                                <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation </label>
+                            </div>
+                            &nbsp;
+                            <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
+                                <option defaultValue value="Add" name="Add">Add</option>
+                                <option option value="Reduce" name="Reduce">Reduce</option>
+                            </select>
                         </div>
-                        <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
-                            <option defaultValue value="Add" name="Add">Add</option>
-                            <option option value="Reduce" name="Reduce">Reduce</option>
-                        </select>
-                        <span className="eco" style={{ marginLeft: '2rem', marginRight: '8px' }}></span>
-                        <span style={{ fontSize: '1.5rem' }}>{Currency} &nbsp;</span>
-                        <input
-                            required='required'
-                            type='number'
-                            id='quantity'
-                            min='0'
-                            value={quantity}
-                            style={{ size: 10 }}
-                            onChange={(event) => setQuantity(event.target.value)}>
-                        </input>
     
-                        <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
-                            Save
-                        </button>
+                        <div className="d-flex align-items-center">
+                            <span className="eco"></span>
+                            <span style={{ fontSize: '1.5rem' }}>{Currency} &nbsp;</span>
+                            <input
+                                required='required'
+                                type='number'
+                                id='quantity'
+                                min='0'
+                                value={quantity}
+                                style={{ size: 10 }}
+                                onChange={(event) => setQuantity(event.target.value)}>
+                            </input> &nbsp;
+                            <button className="btn btn-primary ml-3" onClick={submitEvent}>
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
