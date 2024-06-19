@@ -9,7 +9,7 @@ const Remaining = () => {
 
     return (
         <div className='alert alert-warning'>
-            <span>Remaining: {Currency} {parseInt(Budget) - totalExpenses}</span>
+            <span style={{ fontWeight: 'bold'}}>Remaining:</span> {Currency} {parseInt(Budget) - totalExpenses}
         </div>
     );
 };

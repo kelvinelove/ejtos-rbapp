@@ -14,7 +14,7 @@ const Currencies = () => {
     
 
   return (
-        <div className="alert alert-secondary dropdownContainer"> Currency {
+        <div className="alert alert-secondary dropdownContainer"  style={{ fontWeight: 'bold'}}> Currency {
           <select name="currency" id="currency" value={Currency}
             onChange={event=>changeCurrency(event.target.value)}
             className="dropdown"
