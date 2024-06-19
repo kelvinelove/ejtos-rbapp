@@ -21,11 +21,14 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
   color: #61dafb;
+}
+.btn-success {
+    --bs-btn-bg: #00ad5f!important;
 }
 
 @keyframes App-logo-spin {
