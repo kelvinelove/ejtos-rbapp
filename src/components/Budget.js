@@ -29,7 +29,7 @@ const Budget = () => {
     }
 
     return (
-        <div className='alert alert-secondary' style={{'display': 'flex', 'flexDirection':'row'}}>
+        <div className='alert alert-dark' style={{'display': 'flex', 'flexDirection':'row'}}>
             <span style={{ fontWeight: 'bold'}}>Budget:&nbsp; {Currency} &nbsp; </span>
             <input
                 required='required'
